@@ -58,6 +58,8 @@ const SearchForm = () => {
     url.searchParams.set("checkout", checkout);
 
     router.push(`/search?url=${url.href}`);
+
+    console.log(url)
   }
 
   return (
