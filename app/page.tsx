@@ -1,4 +1,6 @@
 import { trendingData } from "@/components/data/options";
+import SearchForm from "@/components/SearchForm";
+
 
 export default function Home() {
   return (
@@ -11,6 +13,7 @@ export default function Home() {
       </section>
 
       <section className="m-4 mt-0 -mb-14 px-2 lg:px-4">
+        <SearchForm />
       </section>
 
       <section className="mx-auto max-w-7xl mt-10 p-6 bg-white rounded-t-lg">
