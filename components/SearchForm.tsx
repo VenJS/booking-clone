@@ -80,7 +80,7 @@ const SearchForm = () => {
                 <FormMessage />
 
                 <FormControl>
-                  <Input placeholder="London, UK" {...field} />
+                  <Input placeholder="London, UK" {...field}  className="bg-white"/>
                 </FormControl>
               </FormItem>
             )}
@@ -153,7 +153,7 @@ const SearchForm = () => {
                   <FormLabel className="text-white">Adults</FormLabel>
                   <FormMessage />
                   <FormControl>
-                    <Input type="number" placeholder="Adults" {...field} />
+                    <Input type="number" placeholder="Adults" {...field} className="bg-white"/>
                   </FormControl>
                 </FormItem>
               )}
@@ -169,7 +169,7 @@ const SearchForm = () => {
                   <FormLabel className="text-white">Children</FormLabel>
                   <FormMessage />
                   <FormControl>
-                    <Input type="number" placeholder="Children" {...field} />
+                    <Input type="number" placeholder="Children" {...field} className="bg-white"/>
                   </FormControl>
                 </FormItem>
               )}
@@ -185,7 +185,7 @@ const SearchForm = () => {
                   <FormLabel className="text-white">Rooms</FormLabel>
                   <FormMessage />
                   <FormControl>
-                    <Input type="number" placeholder="rooms" {...field} />
+                    <Input type="number" placeholder="rooms" {...field} className="bg-white"/>
                   </FormControl>
                 </FormItem>
               )}
