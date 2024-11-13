@@ -26,3 +26,5 @@ export const products = [
     { name: "See Demo Booking", href: "#", icon: PlayCircleIcon },
     { name: "Contact Support", href: "#", icon: PhoneIcon },
   ];
+
+  export const menus = ['Flights', 'Car Rentals', 'Attractions', 'Flight + Hotel'];
