@@ -83,7 +83,7 @@ const SearchForm = () => {
                 <FormMessage />
 
                 <FormControl>
-                  <Input placeholder="London, UK" {...field}  className="bg-white"/>
+                  <Input placeholder="Barcelona" {...field}  className="bg-white"/>
                 </FormControl>
               </FormItem>
             )}

@@ -1,21 +1,21 @@
 import React from "react";
 import { fetchResults } from "@/lib/fetchResults";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { SearchPageProps } from "@/lib/types";
 
 async function SearchPage({ searchParams }: SearchPageProps) {
+
   if (!searchParams.url) return notFound();
 
   const results = await fetchResults(searchParams);
 
-  if (!results)
-    return (
-      <div>
-        Unfortunately, the Web Scraper API does not work properly all the time
-        and sometimes does not retrieve the information. Please try again later.
-      </div>
-    );
+//Handle cases where web scrapper fails to get data
+  if (!results || !results.content.listings) {
+    const bookingUrl = `${searchParams.url}&group_adults=${searchParams.group_adults}&group_children=${searchParams.group_children}&no_rooms=${searchParams.no_rooms}&checkin=${searchParams.checkin}&checkout=${searchParams.checkout}`;
+
+    redirect(bookingUrl);
+  }
 
   return (
     <section>

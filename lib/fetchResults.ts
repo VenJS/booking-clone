@@ -126,34 +126,41 @@ export async function fetchResults(searchParams: SearchParams) {
     },
   };
 
-  const response = await fetch("https://realtime.oxylabs.io/v1/queries", {
-    method: "POST",
-    body: JSON.stringify(body),
-    next: {
-      revalidate: 60 * 60,
-    },
-    headers: {
-      "Content-Type": "application/json",
-      Authorization:
-        "Basic " + Buffer.from(`${username}:${password}`).toString("base64"),
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.results.length === 0) {
-        window.location.href = url.href;
-        return;
-      }
-      const result: Result = data.results[0];
+  try {
+    const response = await fetch("https://realtime.oxylabs.io/v1/queries", {
+      method: "POST",
+      body: JSON.stringify(body),
+      next: {
+        revalidate: 60 * 60,
+      },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Basic " + Buffer.from(`${username}:${password}`).toString("base64"),
+      },
+    });
 
-      if (!result.content.listings) {
-        window.location.href = url.href;
-        return;
-      }
+    if (!response.ok) {
+      console.error(`Error: ${response.status} - ${response.statusText}`);
+      return null;
+    }
 
-      return result;
-    })
-    .catch((err) => console.log(err));
+    const data = await response.json().catch((err) => {
+      console.error("Failed to parse JSON:", err);
+      return null;
+    });
 
-  return response;
+    if (!data || !data.results) {
+      console.error("Invalid or empty data returned from API.");
+      return null;
+    }
+
+    const result: Result = data.results[0];
+    return result;
+
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return null;
+  }
+
 }
