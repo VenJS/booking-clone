@@ -2,11 +2,9 @@ import React from "react";
 import { fetchResults } from "@/lib/fetchResults";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SearchParams } from "@/lib/types";
+import { SearchPageProps } from "@/lib/types";
 
-interface SearchPageProps {
-  searchParams: SearchParams;
-}
+
 
 async function SearchPage({ searchParams }: SearchPageProps) {
   if (!searchParams.url) return notFound();

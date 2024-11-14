@@ -15,7 +15,7 @@ export async function fetchResults(searchParams: SearchParams) {
     }
   });
 
-  console.log("scraping url", url.href);
+  console.log("scraping url >>>", url.href);
 
   const body = {
     source: "universal",
@@ -142,6 +142,11 @@ export async function fetchResults(searchParams: SearchParams) {
     .then((data) => {
       if (data.results.length === 0) return;
       const result: Result = data.results[0];
+
+      if (!result.content.listings) {
+        window.location.href = url.href;
+        return;
+      }
 
       return result;
     })

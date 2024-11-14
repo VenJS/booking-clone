@@ -2,8 +2,8 @@ export interface SearchPageProps {
     searchParams: SearchParams;
   };
   
-  export type SearchParams = {
-    url: string;
+  export interface SearchParams {
+    url: URL;
     group_adults: string;
     group_children: string;
     no_rooms: string;
