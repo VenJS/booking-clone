@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { fetchResults } from "@/lib/fetchResults";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -12,8 +12,6 @@ async function SearchPage({ searchParams }: SearchPageProps) {
   if (!searchParams.url) return notFound();
 
   const results = await fetchResults(searchParams);
-
-  console.log({results})
 
   if (!results) return <div>No results...</div>;
 
@@ -51,6 +49,8 @@ async function SearchPage({ searchParams }: SearchPageProps) {
                 <div>
                   <Link
                     href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="font-bold text-blue-500 hover:text-blue-600 hover:underline"
                   >
                     {item.title}
