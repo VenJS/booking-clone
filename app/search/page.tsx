@@ -4,14 +4,18 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SearchPageProps } from "@/lib/types";
 
-
-
 async function SearchPage({ searchParams }: SearchPageProps) {
   if (!searchParams.url) return notFound();
 
   const results = await fetchResults(searchParams);
 
-  if (!results) return <div>No results...</div>;
+  if (!results)
+    return (
+      <div>
+        Unfortunately, the Web Scraper API does not work properly all the time
+        and sometimes does not retrieve the information. Please try again later.
+      </div>
+    );
 
   return (
     <section>

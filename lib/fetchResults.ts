@@ -140,7 +140,10 @@ export async function fetchResults(searchParams: SearchParams) {
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data.results.length === 0) return;
+      if (data.results.length === 0) {
+        window.location.href = url.href;
+        return;
+      }
       const result: Result = data.results[0];
 
       if (!result.content.listings) {
