@@ -3,7 +3,7 @@ export interface SearchPageProps {
   };
   
   export type SearchParams = {
-    url: URL;
+    url: string;
     group_adults: string;
     group_children: string;
     no_rooms: string;
