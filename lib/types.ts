@@ -1,4 +1,4 @@
-export type SearchPageProps = {
+export interface SearchPageProps {
     searchParams: SearchParams;
   };
   

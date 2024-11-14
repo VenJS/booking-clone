@@ -5,8 +5,6 @@ import { notFound } from "next/navigation";
 import { SearchPageProps } from "@/lib/types";
 
 
-  
-
 async function SearchPage({ searchParams }: SearchPageProps) {
     if (!searchParams.url) return notFound();
   
